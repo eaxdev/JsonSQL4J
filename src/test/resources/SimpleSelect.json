@@ -1,0 +1,6 @@
+{
+  "fields": [
+    {"column": "field1"},
+    {"column": "field2", "alias": "test"}
+  ]
+}
