@@ -30,6 +30,6 @@ public class SelectQuery {
                 select.getFields().stream()
                         .map(f -> Objects.isNull(f.getAlias()) ? f.getColumn() : f.getColumn() + " AS " + f.getAlias())
                         .collect(Collectors.joining(", ")) +
-                " FROM";
+                " FROM " + select.getTables().get(0).getSchemaName() + "." + select.getTables().get(0).getTableName();
     }
 }

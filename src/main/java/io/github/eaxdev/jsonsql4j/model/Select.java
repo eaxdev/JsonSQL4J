@@ -17,5 +17,8 @@ public class Select {
     @JsonProperty(value = "fields", required = true)
     List<Field> fields;
 
+    @JsonProperty(value = "from", required = true)
+    List<Table> tables;
+
 }
 

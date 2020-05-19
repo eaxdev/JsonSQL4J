@@ -14,6 +14,6 @@ public class SelectTest {
     void simpleSelect() {
         String json = TestUtil.readFileByPath("SimpleSelect.json");
         SelectQuery selectQuery = new SelectQuery(json);
-        assertEquals("SELECT field1, field2 AS test FROM", selectQuery.getSelect());
+        assertEquals("SELECT field1, field2 AS test FROM Schema.table1", selectQuery.getSelect());
     }
 }
