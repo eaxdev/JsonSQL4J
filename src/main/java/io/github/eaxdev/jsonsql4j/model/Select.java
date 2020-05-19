@@ -1,6 +1,7 @@
 package io.github.eaxdev.jsonsql4j.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.github.eaxdev.jsonsql4j.model.criteria.Criteria;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,6 +20,9 @@ public class Select {
 
     @JsonProperty(value = "from", required = true)
     List<Table> tables;
+
+    @JsonProperty("where")
+    Criteria criteria;
 
 }
 

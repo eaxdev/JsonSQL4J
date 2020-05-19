@@ -5,5 +5,15 @@
   ],
   "from": [
     {"table": "table1", "schema": "Schema"}
-  ]
+  ],
+  "where": {
+    "and": [
+      { "eq": {"fieldName": "field2", "value": "Test.Field2"} },
+      { "eq": {"fieldName": "field1", "value": "453.6"} },
+      { "or": [
+        { "eq": {"fieldName": "field2", "value": "field3"} },
+        { "gt": {"fieldName": "field3", "value": "45"} }
+      ]}
+    ]
+  }
 }
