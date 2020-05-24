@@ -1,6 +1,5 @@
 package io.github.eaxdev.jsonsql4j.model.criteria;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import lombok.Getter;
 
@@ -18,9 +17,7 @@ public class And extends GroupCriteria {
     }
 
     @Override
-    @JsonIgnore
-    public ConditionalOperator getConditionalOperator() {
-        return ConditionalOperator.AND;
+    public GroupConditionalOperator getGroupConditionalOperator() {
+        return GroupConditionalOperator.AND;
     }
-
 }

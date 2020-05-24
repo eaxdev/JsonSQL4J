@@ -21,4 +21,12 @@ import java.util.List;
 public abstract class GroupCriteria extends Criteria {
 
     protected final List<Criteria> criteria;
+
+    public abstract GroupConditionalOperator getGroupConditionalOperator();
+
+    @Override
+    public boolean isGroup() {
+        return true;
+    }
+
 }

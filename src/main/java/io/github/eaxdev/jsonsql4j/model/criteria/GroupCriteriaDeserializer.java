@@ -35,9 +35,9 @@ public class GroupCriteriaDeserializer extends StdDeserializer<GroupCriteria> {
         ObjectMapper mapper = (ObjectMapper) p.getCodec();
         List<Criteria> criteriaList = mapper.convertValue(node, TYPE_REFERENCE);
 
-        if (currentKey.equals(ConditionalOperator.AND.getType())) {
+        if (currentKey.equals(GroupConditionalOperator.AND.getJsonView())) {
             return new And(criteriaList);
-        } else if (currentKey.equals(ConditionalOperator.OR.getType())) {
+        } else if (currentKey.equals(GroupConditionalOperator.OR.getJsonView())) {
             return new Or(criteriaList);
         }
         throw new JsonSQL4JParseException("Can not deserialize json. Key [" + currentKey + "] is not correct");

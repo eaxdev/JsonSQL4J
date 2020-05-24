@@ -17,8 +17,8 @@ public class Or extends GroupCriteria {
     }
 
     @Override
-    public ConditionalOperator getConditionalOperator() {
-        return ConditionalOperator.OR;
+    public GroupConditionalOperator getGroupConditionalOperator() {
+        return GroupConditionalOperator.OR;
     }
 
 }

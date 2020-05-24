@@ -17,7 +17,7 @@ public class Eq extends SimpleCriteria {
     }
 
     @Override
-    public ConditionalOperator getConditionalOperator() {
-        return ConditionalOperator.EQUALS_TO;
+    public SimpleConditionalOperator getSimpleConditionalOperator() {
+        return SimpleConditionalOperator.EQUALS_TO;
     }
 }

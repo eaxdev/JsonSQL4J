@@ -13,6 +13,6 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 })
 public abstract class Criteria {
 
-    public abstract ConditionalOperator getConditionalOperator();
+    public abstract boolean isGroup();
 
 }

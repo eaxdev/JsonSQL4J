@@ -17,7 +17,7 @@ public class Lt extends SimpleCriteria {
     }
 
     @Override
-    public ConditionalOperator getConditionalOperator() {
-        return ConditionalOperator.LESS_THAN;
+    public SimpleConditionalOperator getSimpleConditionalOperator() {
+        return SimpleConditionalOperator.LESS_THAN;
     }
 }

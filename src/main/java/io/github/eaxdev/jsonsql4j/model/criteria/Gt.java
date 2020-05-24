@@ -17,7 +17,7 @@ public class Gt extends SimpleCriteria {
     }
 
     @Override
-    public ConditionalOperator getConditionalOperator() {
-        return ConditionalOperator.GREATER_THAN;
+    public SimpleConditionalOperator getSimpleConditionalOperator() {
+        return SimpleConditionalOperator.GREATER_THAN;
     }
 }

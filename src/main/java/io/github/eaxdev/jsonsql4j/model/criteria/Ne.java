@@ -17,7 +17,7 @@ public class Ne extends SimpleCriteria {
     }
 
     @Override
-    public ConditionalOperator getConditionalOperator() {
-        return ConditionalOperator.NOT_EQUALS_TO;
+    public SimpleConditionalOperator getSimpleConditionalOperator() {
+        return SimpleConditionalOperator.NOT_EQUALS_TO;
     }
 }

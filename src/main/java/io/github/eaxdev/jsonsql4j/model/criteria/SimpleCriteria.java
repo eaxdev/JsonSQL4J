@@ -1,5 +1,6 @@
 package io.github.eaxdev.jsonsql4j.model.criteria;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.AllArgsConstructor;
@@ -23,10 +24,16 @@ import lombok.NoArgsConstructor;
         @JsonSubTypes.Type(value = Or.class),})
 public abstract class SimpleCriteria extends Criteria {
 
+    @JsonProperty(value = "fieldName", required = true)
     private String fieldName;
 
+    @JsonProperty(value = "value", required = true)
     private String value;
 
-    public abstract ConditionalOperator getConditionalOperator();
+    public abstract SimpleConditionalOperator getSimpleConditionalOperator();
 
+    @Override
+    public boolean isGroup() {
+        return false;
+    }
 }
