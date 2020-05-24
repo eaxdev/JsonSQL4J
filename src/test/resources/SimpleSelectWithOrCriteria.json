@@ -1,0 +1,15 @@
+{
+  "fields": [
+    {"column": "field1"},
+    {"column": "field2", "alias": "test"}
+  ],
+  "from": [
+    {"table": "table1", "schema": "schema"}
+  ],
+  "where": {
+    "or": [
+      { "eq": {"fieldName": "field3", "value": "5"} },
+      { "eq": {"fieldName": "field4", "value": "3"} }
+    ]
+  }
+}

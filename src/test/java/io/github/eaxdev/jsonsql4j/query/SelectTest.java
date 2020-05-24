@@ -37,4 +37,13 @@ public class SelectTest {
         assertEquals("SELECT field1, field2 AS test FROM schema.table1 WHERE (field3 = 5 AND field4 = 3)",
                 selectQuery.getSelect());
     }
+
+    @Test
+    @DisplayName("Should get simple select with [or] criteria")
+    void simpleSelectWithOrCriteria() {
+        String json = TestUtil.readFileByPath("SimpleSelectWithOrCriteria.json");
+        SelectQuery selectQuery = new SelectQuery(json);
+        assertEquals("SELECT field1, field2 AS test FROM schema.table1 WHERE (field3 = 5 OR field4 = 3)",
+                selectQuery.getSelect());
+    }
 }
