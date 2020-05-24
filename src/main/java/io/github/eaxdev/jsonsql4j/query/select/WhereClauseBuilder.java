@@ -26,21 +26,21 @@ public class WhereClauseBuilder {
     private String constructExpression(SimpleCriteria criteria) {
         switch (criteria.getSimpleConditionalOperator()) {
             case EQUALS_TO:
-                return criteria.getFieldName() + SimpleConditionalOperator.EQUALS_TO.getView() + criteria.getValue();
+                return criteria.getFieldName() + SimpleConditionalOperator.EQUALS_TO.getQueryView() + criteria.getValue();
             case NOT_EQUALS_TO:
-                return criteria.getFieldName() + SimpleConditionalOperator.NOT_EQUALS_TO.getView() + criteria.getValue();
+                return criteria.getFieldName() + SimpleConditionalOperator.NOT_EQUALS_TO.getQueryView() + criteria.getValue();
             case GREATER_THAN:
-                return criteria.getFieldName() + SimpleConditionalOperator.GREATER_THAN.getView() + criteria.getValue();
+                return criteria.getFieldName() + SimpleConditionalOperator.GREATER_THAN.getQueryView() + criteria.getValue();
             case GREATER_THAN_EQUALS:
-                return criteria.getFieldName() + SimpleConditionalOperator.GREATER_THAN_EQUALS.getView() + criteria.getValue();
+                return criteria.getFieldName() + SimpleConditionalOperator.GREATER_THAN_EQUALS.getQueryView() + criteria.getValue();
             case LESS_THAN:
-                return criteria.getFieldName() + SimpleConditionalOperator.LESS_THAN.getView() + criteria.getValue();
+                return criteria.getFieldName() + SimpleConditionalOperator.LESS_THAN.getQueryView() + criteria.getValue();
             case LESS_THAN_EQUALS:
-                return criteria.getFieldName() + SimpleConditionalOperator.LESS_THAN_EQUALS.getView() + criteria.getValue();
+                return criteria.getFieldName() + SimpleConditionalOperator.LESS_THAN_EQUALS.getQueryView() + criteria.getValue();
             case CONTAINS:
-                return criteria.getFieldName() + SimpleConditionalOperator.CONTAINS.getView() + criteria.getValue();
+                return criteria.getFieldName() + SimpleConditionalOperator.CONTAINS.getQueryView() + criteria.getValue();
             case NOT_CONTAINS:
-                return criteria.getFieldName() + SimpleConditionalOperator.NOT_CONTAINS.getView() + criteria.getValue();
+                return criteria.getFieldName() + SimpleConditionalOperator.NOT_CONTAINS.getQueryView() + criteria.getValue();
             default:
                 throw new JsonSQL4JException("Conditional operator [" + criteria.getSimpleConditionalOperator() + "] is unexpected");
         }

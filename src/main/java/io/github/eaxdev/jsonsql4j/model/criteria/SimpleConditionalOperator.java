@@ -24,10 +24,10 @@ public enum SimpleConditionalOperator {
 
     NOT_CONTAINS(" NOT LIKE ");
 
-    private final String view;
+    private final String queryView;
 
-    SimpleConditionalOperator(String view) {
-        this.view = view;
+    SimpleConditionalOperator(String queryView) {
+        this.queryView = queryView;
     }
 
 }
