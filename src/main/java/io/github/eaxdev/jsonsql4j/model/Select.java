@@ -21,6 +21,9 @@ public class Select {
     @JsonProperty(value = "from", required = true)
     List<Table> tables;
 
+    @JsonProperty(value = "joins", required = true)
+    List<Join> joins;
+
     @JsonProperty("where")
     Criteria criteria;
 
