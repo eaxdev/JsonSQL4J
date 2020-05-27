@@ -17,6 +17,8 @@ public class SelectQuery {
 
     private final WhereClauseBuilder whereBuilder;
 
+    private final JoinClauseBuilder joinBuilder;
+
     public SelectQuery(String jsonQuery) {
         //validate by schema
         final ObjectMapper objectMapper = new ObjectMapper();
@@ -26,6 +28,7 @@ public class SelectQuery {
             throw new JsonSQL4JParseException("Can not parse json query: [" + jsonQuery + "]", e);
         }
         whereBuilder = new WhereClauseBuilder(select.getCriteria());
+        joinBuilder = new JoinClauseBuilder(select.getJoins());
     }
 
     public String getSelect() {
@@ -34,6 +37,7 @@ public class SelectQuery {
                         .map(f -> Objects.isNull(f.getAlias()) ? f.getColumn() : f.getColumn() + " AS " + f.getAlias())
                         .collect(Collectors.joining(", ")) +
                 " FROM " + select.getTables().get(0).getSchemaName() + "." + select.getTables().get(0).getTableName()
-                + whereBuilder.build();
+                + whereBuilder.build()
+                + joinBuilder.build();
     }
 }

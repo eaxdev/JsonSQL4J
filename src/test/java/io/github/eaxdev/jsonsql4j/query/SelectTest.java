@@ -49,7 +49,6 @@ public class SelectTest {
     }
 
     @Test
-    @Disabled("Need implement")
     @DisplayName("Should get simple select with join")
     void shouldGetSelectWithJoin() {
         String json = TestUtil.readFileByPath("SelectWithJoin.json");
