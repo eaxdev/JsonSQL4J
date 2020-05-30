@@ -1,5 +1,7 @@
 plugins {
     id 'java'
+    id 'maven-publish'
+    id 'signing'
 }
 
 java {
@@ -33,4 +35,75 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok:1.18.10'
     testAnnotationProcessor 'org.projectlombok:lombok:1.18.12'
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.10.1'
+}
+
+signing {
+    sign publishing.publications
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            customizePom(pom)
+            groupId group
+            artifactId archivesBaseName
+            version version
+
+            from components.java
+        }
+    }
+    repositories {
+        maven {
+            url "https://oss.sonatype.org/service/local/staging/deploy/maven2"
+            credentials {
+                username sonatypeUsername
+                password sonatypePassword
+            }
+        }
+    }
+}
+
+def customizePom(pom) {
+    pom.withXml {
+        def root = asNode()
+
+        root.dependencies.removeAll { dep ->
+            dep.scope == "test"
+        }
+
+        root.children().last() + {
+            resolveStrategy = DELEGATE_FIRST
+
+            description 'Generate SQL queries from JSON strings'
+            name 'JsonSQL4J'
+            url 'https://github.com/eaxdev/JsonSQL4J'
+            organization {
+                name 'com.github.eaxdev'
+                url 'https://github.com/eaxdev'
+            }
+            issueManagement {
+                system 'GitHub'
+                url 'https://github.com/eaxdev/JsonSQL4J/issues'
+            }
+            licenses {
+                license {
+                    name 'MIT License'
+                    url 'https://raw.githubusercontent.com/eaxdev/JsonSQL4J/master/LICENSE'
+                    distribution 'repo'
+                }
+            }
+            scm {
+                url 'https://github.com/eaxdev/JsonSQL4J'
+                connection 'scm:https://github.com/eaxdev/JsonSQL4J.git'
+                developerConnection 'scm:git://github.com/eaxdev/JsonSQL4J.git'
+            }
+            developers {
+                developer {
+                    id 'eaxdev'
+                    name 'RomanSA'
+                    email 'eaxdev@ya.ru'
+                }
+            }
+        }
+    }
 }
