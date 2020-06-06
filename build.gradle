@@ -1,5 +1,5 @@
 plugins {
-    id 'java'
+    id 'java-library'
     id 'maven-publish'
     id 'signing'
 }
@@ -34,7 +34,7 @@ dependencies {
     implementation 'org.projectlombok:lombok:1.18.10'
     annotationProcessor 'org.projectlombok:lombok:1.18.10'
     testAnnotationProcessor 'org.projectlombok:lombok:1.18.12'
-    implementation 'com.fasterxml.jackson.core:jackson-databind:2.10.1'
+    api 'com.fasterxml.jackson.core:jackson-databind:2.10.1'
 }
 
 signing {
