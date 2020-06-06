@@ -1,5 +1,4 @@
 plugins {
-    id 'maven'
     id 'java-library'
     id 'maven-publish'
     id 'signing'
@@ -61,6 +60,14 @@ publishing {
                     username sonatypeUsername
                     password sonatypePassword
                 }
+            }
+        }
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/eaxdev/JsonSQL4J")
+            credentials {
+                username = project.findProperty("gpr.user") ?: System.getenv("eaxdev")
+                password = project.findProperty("gpr.key") ?: System.getenv("GITHUB_TOKEN")
             }
         }
     }
