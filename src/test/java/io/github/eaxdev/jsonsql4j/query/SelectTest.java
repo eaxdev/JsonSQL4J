@@ -59,7 +59,7 @@ public class SelectTest {
 
     @Test
     @DisplayName("Should get simple select with join")
-    void shouldGetSelectWithExpression() throws JsonProcessingException {
+    void shouldGetSelectWithExpression() {
         String json = TestUtil.readFileByPath("SelectWithExpression.json");
         SelectQuery selectQuery = new SelectQuery(json);
         assertEquals("SELECT count(*) FROM schema.table1", selectQuery.getSelect());

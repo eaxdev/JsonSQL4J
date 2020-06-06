@@ -2,18 +2,16 @@ package io.github.eaxdev.jsonsql4j.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.github.eaxdev.jsonsql4j.model.criteria.Criteria;
-import io.github.eaxdev.jsonsql4j.model.target.TargetClause;
 import io.github.eaxdev.jsonsql4j.model.join.Join;
-import lombok.Getter;
-import lombok.Setter;
+import io.github.eaxdev.jsonsql4j.model.target.TargetClause;
+import lombok.Value;
 
 import java.util.List;
 
 /**
  * @author eaxdev
  */
-@Getter
-@Setter
+@Value
 public class Select {
 
     @JsonProperty(value = "fields", required = true)
@@ -27,5 +25,6 @@ public class Select {
 
     @JsonProperty("where")
     Criteria criteria;
+
 }
 

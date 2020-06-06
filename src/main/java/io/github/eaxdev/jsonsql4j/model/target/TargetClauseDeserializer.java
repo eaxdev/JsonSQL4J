@@ -38,7 +38,6 @@ public class TargetClauseDeserializer extends StdDeserializer<TargetClause> {
         } else {
             this.propertyNameToType = Collections.emptyMap();
         }
-
     }
 
     @Override
