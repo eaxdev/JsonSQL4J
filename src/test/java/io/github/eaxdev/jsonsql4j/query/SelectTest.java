@@ -1,8 +1,8 @@
 package io.github.eaxdev.jsonsql4j.query;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import io.github.eaxdev.jsonsql4j.TestUtil;
 import io.github.eaxdev.jsonsql4j.query.select.SelectQuery;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -40,7 +40,7 @@ public class SelectTest {
     }
 
     @Test
-    @DisplayName("Should get simple select with [or] criteria")
+    @DisplayName("Should get select with [or] criteria")
     void shouldGetSelectWithOrCriteria() {
         String json = TestUtil.readFileByPath("SelectWithOrCriteria.json");
         SelectQuery selectQuery = new SelectQuery(json);
@@ -49,11 +49,19 @@ public class SelectTest {
     }
 
     @Test
-    @DisplayName("Should get simple select with join")
+    @DisplayName("Should get select with join")
     void shouldGetSelectWithJoin() {
         String json = TestUtil.readFileByPath("SelectWithJoin.json");
         SelectQuery selectQuery = new SelectQuery(json);
         assertEquals("SELECT field1, field2 AS test FROM schema.table1 INNER JOIN schema2.table2 ON field2 = field3",
                 selectQuery.getSelect());
+    }
+
+    @Test
+    @DisplayName("Should get simple select with join")
+    void shouldGetSelectWithExpression() throws JsonProcessingException {
+        String json = TestUtil.readFileByPath("SelectWithExpression.json");
+        SelectQuery selectQuery = new SelectQuery(json);
+        assertEquals("SELECT count(*) FROM schema.table1", selectQuery.getSelect());
     }
 }

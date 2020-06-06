@@ -10,10 +10,11 @@ import java.util.Objects;
  * @author eaxdev
  */
 @RequiredArgsConstructor
-public class WhereClauseBuilder {
+public class WhereClauseBuilder implements ClauseBuilder {
 
     private final Criteria criteria;
 
+    @Override
     public String build() {
         if (Objects.isNull(criteria)) {
             return "";

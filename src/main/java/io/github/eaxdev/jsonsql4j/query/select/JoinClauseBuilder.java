@@ -1,8 +1,6 @@
 package io.github.eaxdev.jsonsql4j.query.select;
 
-import io.github.eaxdev.jsonsql4j.model.Join;
-import io.github.eaxdev.jsonsql4j.model.criteria.GroupCriteria;
-import io.github.eaxdev.jsonsql4j.model.criteria.SimpleCriteria;
+import io.github.eaxdev.jsonsql4j.model.join.Join;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
@@ -12,10 +10,11 @@ import java.util.Objects;
  * @author eaxdev
  */
 @RequiredArgsConstructor
-public class JoinClauseBuilder {
+public class JoinClauseBuilder implements ClauseBuilder {
 
     private final List<Join> joins;
 
+    @Override
     public String build() {
         if (Objects.isNull(joins) || joins.isEmpty()) {
             return "";

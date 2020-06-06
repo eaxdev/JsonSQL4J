@@ -1,0 +1,8 @@
+{
+  "fields": [
+    {"expression": "count(*)"}
+  ],
+  "from": [
+    {"table": "table1", "schema": "schema"}
+  ]
+}

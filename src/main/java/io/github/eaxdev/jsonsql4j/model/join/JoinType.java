@@ -1,4 +1,4 @@
-package io.github.eaxdev.jsonsql4j.model;
+package io.github.eaxdev.jsonsql4j.model.join;
 
 import lombok.Getter;
 
