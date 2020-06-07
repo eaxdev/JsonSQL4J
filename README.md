@@ -2,6 +2,7 @@
 [![Build Status](https://github.com/eaxdev/JsonSQL4J/workflows/build/badge.svg)](https://github.com/eaxdev/JsonSQL4J/actions)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/eaxdev/Java-JsonResume-Validator/master/LICENSE)
 [![Maven Central](https://img.shields.io/maven-central/v/io.github.eaxdev/jsonsql4j.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22io.github.eaxdev%22%20AND%20a:%22jsonsql4j%22)
+[![codecov](https://codecov.io/gh/eaxdev/JsonSQL4J/branch/master/graph/badge.svg)](https://codecov.io/gh/eaxdev/JsonSQL4J)
 
 This library for mapping JSON style query objects to SQL queries
 
