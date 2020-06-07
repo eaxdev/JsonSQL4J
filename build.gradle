@@ -1,8 +1,16 @@
+buildscript {
+    dependencies {
+        classpath "gradle.plugin.com.github.spotbugs.snom:spotbugs-gradle-plugin:4.0.1"
+    }
+}
+
 plugins {
     id 'java-library'
     id 'maven-publish'
     id 'signing'
     id 'jacoco'
+    id "org.sonarqube" version "3.0"
+    id 'com.github.spotbugs' version '4.2.4'
 }
 
 java {
@@ -85,6 +93,32 @@ publishing {
                 password = project.findProperty("gpr.key") ?: System.getenv("GITHUB_TOKEN")
             }
         }
+    }
+}
+
+import com.github.spotbugs.snom.SpotBugsTask
+
+spotbugs {
+    effort = 'max'
+}
+
+project.tasks["sonarqube"].dependsOn jacocoTestReport
+
+tasks.withType(SpotBugsTask) {
+    reports {
+        xml.enabled = true
+        html.enabled = false
+    }
+}
+
+sonarqube {
+    properties {
+        property 'sonar.projectName', "$rootProject.name"
+        property "sonar.projectKey", "eaxdev_JsonSQL4J"
+        property "sonar.organization", "eaxdev"
+        property "sonar.host.url", "https://sonarcloud.io"
+        property 'sonar.login', sonarToken
+        property 'sonar.jacoco.reportPaths', "$project.buildDir/jacoco/test.exec"
     }
 }
 
