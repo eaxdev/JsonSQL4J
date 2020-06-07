@@ -2,7 +2,6 @@ package io.github.eaxdev.jsonsql4j.model.target;
 
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
@@ -19,10 +18,6 @@ import java.util.stream.Collectors;
  * @author eaxdev
  */
 public class TargetClauseDeserializer extends StdDeserializer<TargetClause> {
-
-    private static final TypeReference<TargetClause> TYPE_REFERENCE =
-            new TypeReference<TargetClause>() {
-            };
 
     private final Map<String, Class<?>> propertyNameToType;
 
