@@ -20,6 +20,8 @@ jobs:
 
       - name: Build with Gradle
         uses: eskatos/gradle-command-action@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           gradle-version: current
           arguments: sonarqube build -PsonarToken=${{secrets.SONAR_TOKEN}}
