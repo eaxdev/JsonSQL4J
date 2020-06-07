@@ -23,3 +23,6 @@ jobs:
         with:
           gradle-version: current
           arguments: build
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v1.0.3
