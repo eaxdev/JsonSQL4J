@@ -1,4 +1,4 @@
-package io.github.eaxdev.jsonsql4j.query.select;
+package io.github.eaxdev.jsonsql4j.query;
 
 import io.github.eaxdev.jsonsql4j.exception.JsonSQL4JException;
 import io.github.eaxdev.jsonsql4j.model.criteria.*;

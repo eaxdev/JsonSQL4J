@@ -1,0 +1,10 @@
+{
+  "schema": "schema",
+  "table": "test",
+  "where": {
+    "and": [
+      { "eq": {"fieldName": "field3", "value": "5"} },
+      { "eq": {"fieldName": "field4", "value": "3"} }
+    ]
+  }
+}

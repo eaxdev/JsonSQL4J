@@ -7,11 +7,14 @@ import io.github.eaxdev.jsonsql4j.exception.JsonSQL4JParseException;
 import io.github.eaxdev.jsonsql4j.model.Select;
 import io.github.eaxdev.jsonsql4j.model.target.TargetClause;
 import io.github.eaxdev.jsonsql4j.model.target.TargetClauseDeserializer;
+import io.github.eaxdev.jsonsql4j.query.ClauseBuilder;
+import io.github.eaxdev.jsonsql4j.query.Query;
+import io.github.eaxdev.jsonsql4j.query.WhereClauseBuilder;
 
 /**
  * @author eaxdev
  */
-public class SelectQuery {
+public class SelectQuery implements Query {
 
     private static final ObjectMapper MAPPER = new ObjectMapper();
 
@@ -41,7 +44,8 @@ public class SelectQuery {
         targetBuilder = new TargetClauseBuilder(select.getFields());
     }
 
-    public String getSelect() {
+    @Override
+    public String getQuery() {
         return "SELECT " +
                 targetBuilder.build() +
                 " FROM " + select.getTables().get(0).getSchemaName() + "." + select.getTables().get(0).getTableName()

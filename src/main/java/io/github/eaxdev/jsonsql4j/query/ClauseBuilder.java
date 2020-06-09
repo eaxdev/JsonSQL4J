@@ -1,4 +1,4 @@
-package io.github.eaxdev.jsonsql4j.query.select;
+package io.github.eaxdev.jsonsql4j.query;
 
 /**
  * @author eaxdev
