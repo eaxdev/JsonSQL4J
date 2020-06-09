@@ -52,8 +52,8 @@ Given JSON:
 use library:
 
 ```java
-SelectQuery selectQuery = new SelectQuery(jsonString);
-String query = selectQuery.getSelect();
+Query selectQuery = new SelectQuery(jsonString);
+String query = selectQuery.getQuery();
 // query = SELECT field1, field2 AS test FROM schema.table1 WHERE (field3 = 5 OR field4 = 3)
 
 ```
