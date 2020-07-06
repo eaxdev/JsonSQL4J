@@ -1,0 +1,11 @@
+{
+  "table": {
+    "table": "audit",
+    "schema": "security"
+  },
+  "values": {
+    "eventType": "MODIFY",
+    "eventDate": "2020-01-01T23:28:56.782Z",
+    "userId": 100
+  }
+}

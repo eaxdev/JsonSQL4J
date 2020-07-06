@@ -18,7 +18,7 @@ public class TargetClauseBuilder implements ClauseBuilder {
     @Override
     public String build() {
         return targetClauses.stream()
-                .map(t -> t.getQueryView())
+                .map(TargetClause::getQueryView)
                 .collect(Collectors.joining(", "));
     }
 }
