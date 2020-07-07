@@ -1,0 +1,17 @@
+{
+  "table": {
+    "table": "audit",
+    "schema": "security"
+  },
+  "modify": {
+    "eventType": "MODIFY",
+    "eventDate": "2020-01-01T23:28:56.782Z",
+    "userId": 100
+  },
+  "where": {
+    "eq": {
+      "fieldName": "id",
+      "value": "5"
+    }
+  }
+}
