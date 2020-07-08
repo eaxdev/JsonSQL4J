@@ -17,13 +17,13 @@ You can use following Maven dependency:
 <dependency>
   <groupId>io.github.eaxdev</groupId>
   <artifactId>jsonsql4j</artifactId>
-  <version>0.0.1</version>
+  <version>0.0.2</version>
 </dependency>
 ```
 ## Gradle
 
 ```groovy
-implementation 'io.github.eaxdev:jsonsql4j:0.0.1'
+implementation 'io.github.eaxdev:jsonsql4j:0.0.2'
 ```
 Also, you can use [GitHub Packages](https://github.com/eaxdev/JsonSQL4J/packages).
 
@@ -52,8 +52,8 @@ Given JSON:
 use library:
 
 ```java
-SelectQuery selectQuery = new SelectQuery(jsonString);
-String query = selectQuery.getSelect();
+Query selectQuery = new SelectQuery(jsonString);
+String query = selectQuery.getQuery();
 // query = SELECT field1, field2 AS test FROM schema.table1 WHERE (field3 = 5 OR field4 = 3)
 
 ```
