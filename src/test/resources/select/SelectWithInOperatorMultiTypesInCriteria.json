@@ -1,0 +1,36 @@
+{
+  "fields": [
+    {
+      "column": "field1"
+    },
+    {
+      "column": "field2",
+      "alias": "test"
+    }
+  ],
+  "from": [
+    {
+      "table": "table1",
+      "schema": "schema"
+    }
+  ],
+  "where": {
+    "or": [
+      {
+        "in": {
+          "fieldName": "field3",
+          "values": [
+            "US",
+            6
+          ]
+        }
+      },
+      {
+        "eq": {
+          "fieldName": "field4",
+          "value": "3"
+        }
+      }
+    ]
+  }
+}

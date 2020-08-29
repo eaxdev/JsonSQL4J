@@ -18,15 +18,10 @@ import java.util.List;
 @Getter
 @AllArgsConstructor
 @JsonDeserialize(using = GroupCriteriaDeserializer.class)
-public abstract class GroupCriteria extends Criteria {
+public abstract class GroupCriteria implements Criteria {
 
     protected final List<Criteria> criteria;
 
     public abstract GroupConditionalOperator getGroupConditionalOperator();
-
-    @Override
-    public boolean isGroup() {
-        return true;
-    }
 
 }

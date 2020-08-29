@@ -20,4 +20,9 @@ public class Eq extends SimpleCriteria {
     public SimpleConditionalOperator getSimpleConditionalOperator() {
         return SimpleConditionalOperator.EQUALS_TO;
     }
+
+    @Override
+    public CriteriaType getCriteriaType() {
+        return CriteriaType.SIMPLE;
+    }
 }

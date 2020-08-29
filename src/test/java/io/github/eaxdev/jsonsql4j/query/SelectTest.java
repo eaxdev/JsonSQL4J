@@ -1,16 +1,18 @@
 package io.github.eaxdev.jsonsql4j.query;
 
 import io.github.eaxdev.jsonsql4j.TestUtil;
+import io.github.eaxdev.jsonsql4j.exception.JsonSQL4JException;
 import io.github.eaxdev.jsonsql4j.query.select.SelectQuery;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 /**
  * @author eaxdev
  */
-public class SelectTest {
+class SelectTest {
 
     @Test
     @DisplayName("Should get select")
@@ -63,4 +65,32 @@ public class SelectTest {
         Query selectQuery = new SelectQuery(json);
         assertEquals("SELECT count(*) FROM schema.table1", selectQuery.getQuery());
     }
+
+    @Test
+    @DisplayName("Should get simple select with in operator (strings) in criteria")
+    void shouldGetSelectWithInOperatorStringsInCriteria() {
+        String json = TestUtil.readFileByPath("select/SelectWithInOperatorStringsInCriteria.json");
+        Query selectQuery = new SelectQuery(json);
+        assertEquals("SELECT field1, field2 AS test FROM schema.table1 " +
+                "WHERE (field3 IN ('US', 'UK', 'IN', 'NZ') OR field4 = 3)", selectQuery.getQuery());
+    }
+
+    @Test
+    @DisplayName("Should get simple select with in operator (digits) in criteria")
+    void shouldGetSelectWithInOperatorDigitsInCriteria() {
+        String json = TestUtil.readFileByPath("select/SelectWithInOperatorDigitsInCriteria.json");
+        Query selectQuery = new SelectQuery(json);
+        assertEquals("SELECT field1, field2 AS test FROM schema.table1 " +
+                "WHERE (field3 IN (5, 6, 7) OR field4 = 3)", selectQuery.getQuery());
+    }
+
+    @Test
+    @DisplayName("Should get error when values in IN operator is different types")
+    void shouldGetErrorWhenValuesInINOperatorDifferentTypes() {
+        String json = TestUtil.readFileByPath("select/SelectWithInOperatorMultiTypesInCriteria.json");
+        Query selectQuery = new SelectQuery(json);
+        JsonSQL4JException jsonSQL4JException = assertThrows(JsonSQL4JException.class, selectQuery::getQuery);
+        assertEquals("Values in IN operator must be same type", jsonSQL4JException.getMessage());
+    }
+
 }

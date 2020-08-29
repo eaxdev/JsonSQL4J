@@ -63,6 +63,12 @@ dependencies {
 signing {
     sign publishing.publications
 }
+/*spotbugsMain {
+    reports {
+        xml.enabled = false
+        html.enabled = true
+    }
+}*/
 
 publishing {
     publications {

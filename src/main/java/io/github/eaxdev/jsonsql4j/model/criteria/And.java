@@ -20,4 +20,9 @@ public class And extends GroupCriteria {
     public GroupConditionalOperator getGroupConditionalOperator() {
         return GroupConditionalOperator.AND;
     }
+
+    @Override
+    public CriteriaType getCriteriaType() {
+        return CriteriaType.GROUP;
+    }
 }

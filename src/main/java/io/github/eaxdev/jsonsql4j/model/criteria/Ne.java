@@ -20,4 +20,10 @@ public class Ne extends SimpleCriteria {
     public SimpleConditionalOperator getSimpleConditionalOperator() {
         return SimpleConditionalOperator.NOT_EQUALS_TO;
     }
+
+    @Override
+    public CriteriaType getCriteriaType() {
+        return CriteriaType.SIMPLE;
+    }
+
 }

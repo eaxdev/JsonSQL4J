@@ -20,4 +20,10 @@ public class Ge extends SimpleCriteria {
     public SimpleConditionalOperator getSimpleConditionalOperator() {
         return SimpleConditionalOperator.GREATER_THAN_EQUALS;
     }
+
+    @Override
+    public CriteriaType getCriteriaType() {
+        return CriteriaType.SIMPLE;
+    }
+
 }

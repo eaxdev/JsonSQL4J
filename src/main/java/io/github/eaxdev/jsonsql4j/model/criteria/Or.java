@@ -21,4 +21,8 @@ public class Or extends GroupCriteria {
         return GroupConditionalOperator.OR;
     }
 
+    @Override
+    public CriteriaType getCriteriaType() {
+        return CriteriaType.GROUP;
+    }
 }

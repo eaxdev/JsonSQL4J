@@ -20,4 +20,10 @@ public class Gt extends SimpleCriteria {
     public SimpleConditionalOperator getSimpleConditionalOperator() {
         return SimpleConditionalOperator.GREATER_THAN;
     }
+
+    @Override
+    public CriteriaType getCriteriaType() {
+        return CriteriaType.SIMPLE;
+    }
+
 }

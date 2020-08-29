@@ -21,8 +21,8 @@ import lombok.NoArgsConstructor;
         @JsonSubTypes.Type(value = Le.class),
         @JsonSubTypes.Type(value = Lt.class),
         @JsonSubTypes.Type(value = Ne.class),
-        @JsonSubTypes.Type(value = Or.class),})
-public abstract class SimpleCriteria extends Criteria {
+        @JsonSubTypes.Type(value = Or.class)})
+public abstract class SimpleCriteria implements Criteria {
 
     @JsonProperty(value = "fieldName", required = true)
     private String fieldName;
@@ -32,8 +32,4 @@ public abstract class SimpleCriteria extends Criteria {
 
     public abstract SimpleConditionalOperator getSimpleConditionalOperator();
 
-    @Override
-    public boolean isGroup() {
-        return false;
-    }
 }

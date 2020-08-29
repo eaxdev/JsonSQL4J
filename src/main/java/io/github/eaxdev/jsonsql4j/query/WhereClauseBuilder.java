@@ -19,12 +19,33 @@ public class WhereClauseBuilder implements ClauseBuilder {
         if (Objects.isNull(criteria)) {
             return "";
         }
-        return " WHERE " + (criteria.isGroup()
-                ? constructGroupCriteria((GroupCriteria) criteria)
-                : constructExpression((SimpleCriteria) criteria));
+        return " WHERE " + constructExpression(criteria);
     }
 
-    private String constructExpression(SimpleCriteria criteria) {
+    private String constructExpression(Criteria criteria) {
+        switch (criteria.getCriteriaType()) {
+            case GROUP:
+                return constructByGroupCriteria((GroupCriteria) criteria);
+            case SIMPLE:
+                return constructBySimpleCriteria((SimpleCriteria) criteria);
+            case MULTI_VALUE:
+                return constructByMultiValueCriteria((MultiValueCriteria) criteria);
+            default:
+                throw new JsonSQL4JException("Conditional operator [" + criteria.getCriteriaType() + "] is unexpected");
+        }
+    }
+
+    private String constructByMultiValueCriteria(MultiValueCriteria criteria) {
+        switch (criteria.getMultiValueConditionalOperator()) {
+            case IN:
+                return criteria.getFieldName() + MultiValueConditionalOperator.IN.getQueryView()
+                        + "(" + criteria.getValuesView() + ")";
+            default:
+                throw new JsonSQL4JException("Conditional operator [" + criteria.getMultiValueConditionalOperator() + "] is unexpected");
+        }
+    }
+
+    private String constructBySimpleCriteria(SimpleCriteria criteria) {
         switch (criteria.getSimpleConditionalOperator()) {
             case EQUALS_TO:
                 return criteria.getFieldName() + SimpleConditionalOperator.EQUALS_TO.getQueryView() + criteria.getValue();
@@ -47,14 +68,14 @@ public class WhereClauseBuilder implements ClauseBuilder {
         }
     }
 
-    private String constructGroupCriteria(GroupCriteria criteria) {
+    private String constructByGroupCriteria(GroupCriteria criteria) {
         if (criteria.getGroupConditionalOperator() == GroupConditionalOperator.AND) {
-            String leftExpression = constructExpression((SimpleCriteria) criteria.getCriteria().get(0));
-            String rightExpression = constructExpression((SimpleCriteria) criteria.getCriteria().get(1));
+            String leftExpression = constructExpression(criteria.getCriteria().get(0));
+            String rightExpression = constructExpression(criteria.getCriteria().get(1));
             return "(" + leftExpression + GroupConditionalOperator.AND.getQueryView() + rightExpression + ")";
         } else {
-            String leftExpression = constructExpression((SimpleCriteria) criteria.getCriteria().get(0));
-            String rightExpression = constructExpression((SimpleCriteria) criteria.getCriteria().get(1));
+            String leftExpression = constructExpression(criteria.getCriteria().get(0));
+            String rightExpression = constructExpression(criteria.getCriteria().get(1));
             return "(" + leftExpression + GroupConditionalOperator.OR.getQueryView() + rightExpression + ")";
         }
     }
