@@ -17,13 +17,13 @@ You can use following Maven dependency:
 <dependency>
   <groupId>io.github.eaxdev</groupId>
   <artifactId>jsonsql4j</artifactId>
-  <version>0.0.2</version>
+  <version>0.0.3</version>
 </dependency>
 ```
 ## Gradle
 
 ```groovy
-implementation 'io.github.eaxdev:jsonsql4j:0.0.2'
+implementation 'io.github.eaxdev:jsonsql4j:0.0.3'
 ```
 Also, you can use [GitHub Packages](https://github.com/eaxdev/JsonSQL4J/packages).
 
